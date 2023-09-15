@@ -22,7 +22,7 @@ This repository contains a Go 🐹 boilerplate project that leverages the powerf
 2. Customize the settings in the configuration files to match your project's requirements.
 3. Add your controllers, models, and routes to build your application's functionality.
 4. Run the server with the command: `go run main.go`.
-5. Access your application at `http://localhost:8080` in your web browser to see it in action.
+5. Access your application at `http://localhost:8888` in your web browser to see it in action.
 
 ## Contributing 🤝
 
