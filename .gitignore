@@ -1,9 +1,10 @@
-# Arquivos de compilação e binários
 /bin/
 /*.exe
 /*.dll
 /*.o
 /*.a
 
-# Diretório de dependências
 /vendor/
+
+
+.env
