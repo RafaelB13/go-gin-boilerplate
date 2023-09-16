@@ -1,8 +1,27 @@
 package config
 
 import (
+	"fmt"
 	"os"
+
+	"gorm.io/gorm"
 )
+
+var (
+	db     *gorm.DB
+	logger *Logger
+)
+
+func Init() error {
+	var err error
+	logger = GetLogger("config")
+	// Initialize MySQL
+	db, err = initMySQL()
+	if err != nil {
+		return fmt.Errorf("error initializing mysql: %v", err)
+	}
+	return nil
+}
 
 func ServerListenner() string {
 	DotEnv().LoadEnv()
@@ -25,4 +44,14 @@ func ServerListenner() string {
 
 	return appURL + port
 
+}
+
+func GetLogger(p string) *Logger {
+	// Initialize Logger
+	logger = NewLogger(p)
+	return logger
+}
+
+func GetDatabase() *gorm.DB {
+	return db
 }

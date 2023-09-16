@@ -5,6 +5,8 @@
 /*.a
 
 /vendor/
+.docker/
+.vscode/
 
 
 .env
