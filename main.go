@@ -14,7 +14,7 @@ func main() {
 	//Init Config
 	err := config.Init()
 	if err != nil {
-		logger.Errorf("error starting settings", err)
+		logger.Errorf("error starting settings", err.Error())
 		return
 	}
 	// Start
