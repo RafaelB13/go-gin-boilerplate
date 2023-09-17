@@ -4,6 +4,8 @@ import (
 	"io"
 	"log"
 	"os"
+
+	"github.com/fatih/color"
 )
 
 type Logger struct {
@@ -16,16 +18,20 @@ type Logger struct {
 
 func NewLogger(p string) *Logger {
 	writer := io.Writer(os.Stdout)
-	logger := log.New(writer, p, log.Ldate|log.Ltime)
+	logger := log.New(writer, "", log.Ldate|log.Ltime)
+
+	cyan := color.New(color.FgCyan).SprintfFunc()
+	green := color.New(color.FgGreen).SprintfFunc()
+	yellow := color.New(color.FgYellow).SprintfFunc()
+	red := color.New(color.FgRed).SprintfFunc()
 
 	return &Logger{
-		debug:   log.New(writer, "|> DEBUG: ", logger.Flags()),
-		info:    log.New(writer, "|> INFO: ", logger.Flags()),
-		warning: log.New(writer, "|> WARNING: ", logger.Flags()),
-		err:     log.New(writer, "|> ERROR: ", logger.Flags()),
+		debug:   log.New(writer, cyan("|> DEBUG: "), logger.Flags()),
+		info:    log.New(writer, green("|> INFO: "), logger.Flags()),
+		warning: log.New(writer, yellow("|> WARNING: "), logger.Flags()),
+		err:     log.New(writer, red("|> ERROR: "), logger.Flags()),
 		writer:  writer,
 	}
-
 }
 
 // Create Non-Formatted Logs
