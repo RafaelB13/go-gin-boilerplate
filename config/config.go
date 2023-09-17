@@ -16,7 +16,7 @@ func Init() error {
 	var err error
 	logger = GetLogger("config")
 	// Initialize MySQL
-	db, err = initMySQL()
+	db, err = initDB()
 	if err != nil {
 		return fmt.Errorf("error initializing mysql: %v", err)
 	}
