@@ -8,5 +8,5 @@
 .docker/
 .vscode/
 
-
+/data
 .env
