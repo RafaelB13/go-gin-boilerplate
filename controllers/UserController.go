@@ -8,6 +8,7 @@ import (
 	"github.com/rafaelb13/go-gin-boilerplate/config"
 	"github.com/rafaelb13/go-gin-boilerplate/handler"
 	"github.com/rafaelb13/go-gin-boilerplate/models"
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
 
@@ -46,11 +47,16 @@ func (c *Controller) Create(ctx *gin.Context) {
 
 	ctx.BindJSON(&request)
 
+	hashPassowrd, err := bcrypt.GenerateFromPassword([]byte(request.Password), 10)
+	if err != nil {
+		logger.Errorf("Error generating password: %v", err)
+	}
+
 	user := models.User{
 		ID:       uuid.New(),
 		Name:     request.Name,
 		Email:    request.Email,
-		Password: request.Password,
+		Password: string(hashPassowrd),
 	}
 
 	if err := db.Create(&user).Error; err != nil {
