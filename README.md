@@ -21,8 +21,9 @@ This repository contains a Go 🐹 boilerplate project that leverages the powerf
 1. Clone this repository to your local machine.
 2. Customize the settings in the configuration files to match your project's requirements.
 3. Add your controllers, models, and routes to build your application's functionality.
-4. Run the server with the command: `go run main.go`.
-5. Access your application at `http://localhost:8888` in your web browser to see it in action.
+4. Run `go mod tidy`
+5. Run the server with the command: `go run main.go`.
+6. Access your application at `http://localhost:8888` in your web browser to see it in action.
 
 ## Contributing 🤝
 
